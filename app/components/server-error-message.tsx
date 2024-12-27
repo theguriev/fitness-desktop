@@ -1,4 +1,4 @@
-import type { SubmitAction } from "../actions/submit";
+import type { SubmitAction } from "../login/actions/submit";
 
 const ServerErrorMessage = ({ response }: { response?: SubmitAction }) => {
   if (
@@ -6,9 +6,7 @@ const ServerErrorMessage = ({ response }: { response?: SubmitAction }) => {
     "statusCode" in response &&
     (response.statusCode === 409 || response.statusCode === 403)
   ) {
-    return (
-      <p className="text-xs font-medium text-destructive">wtf</p>
-    );
+    return <p className="text-xs font-medium text-destructive">wtf</p>;
   }
   return null;
 };
