@@ -18,9 +18,9 @@ import { Input } from "@/components/ui/input";
 
 import submitAction from "../actions/submit";
 import type { SubmitAction } from "../actions/submit";
-import { formSchema } from "../zod";
-import type { FormSchema } from "../zod";
-import ServerErrorMessage from "./server-error-message";
+import { formSchema } from "../../utils/zod";
+import type { FormSchema } from "../../utils/zod";
+import ServerErrorMessage from "../../components/server-error-message";
 import { DumbbellIcon } from "lucide-react";
 
 const LoginForm = () => {

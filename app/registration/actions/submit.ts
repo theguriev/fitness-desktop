@@ -1,6 +1,6 @@
 "use server";
 
-import type { FormSchema } from "../../utils/zod";
+import type { FormSchema } from "../zod";
 
 const submit = async (body: FormSchema) => {
   return body;
