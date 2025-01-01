@@ -26,7 +26,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 
-export function NavUser({
+const NavUser = ({
   user,
 }: {
   user: {
@@ -34,7 +34,7 @@ export function NavUser({
     email: string;
     avatar: string;
   };
-}) {
+}) => {
   const { isMobile } = useSidebar();
 
   return (
@@ -107,4 +107,8 @@ export function NavUser({
       </SidebarMenuItem>
     </SidebarMenu>
   );
-}
+};
+
+NavUser.displayName = "NavUser";
+
+export default NavUser;
