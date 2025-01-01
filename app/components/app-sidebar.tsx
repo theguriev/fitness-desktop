@@ -2,13 +2,14 @@
 
 import * as React from "react";
 import {
-  ArchiveX,
   Command,
-  File,
   Inbox,
   LayoutDashboard,
-  Send,
-  Trash2,
+  Utensils,
+  Dumbbell,
+  CalendarDays,
+  Users,
+  PersonStanding,
 } from "lucide-react";
 
 import NavUser from "./nav-user";
@@ -39,33 +40,39 @@ const data = {
       isActive: true,
     },
     {
-      title: "Inbox",
+      title: "Statistics",
       url: "#",
       icon: Inbox,
       isActive: false,
     },
     {
-      title: "Drafts",
+      title: "Exercises",
       url: "#",
-      icon: File,
+      icon: Dumbbell,
       isActive: false,
     },
     {
-      title: "Sent",
+      title: "Schedule",
       url: "#",
-      icon: Send,
+      icon: CalendarDays,
       isActive: false,
     },
     {
-      title: "Junk",
+      title: "Clients",
       url: "#",
-      icon: ArchiveX,
+      icon: Users,
       isActive: false,
     },
     {
-      title: "Trash",
+      title: "Workout Tracker",
       url: "#",
-      icon: Trash2,
+      icon: PersonStanding,
+      isActive: false,
+    },
+    {
+      title: "Meal Plan",
+      url: "#",
+      icon: Utensils,
       isActive: false,
     },
   ],
@@ -77,55 +84,53 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
   const [activeItem, setActiveItem] = React.useState(data.navMain[0]);
 
   return (
-    <Sidebar className="w-full" {...props}>
-      <Sidebar className="w-full border-r">
-        <SidebarHeader>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton size="lg" asChild className="md:h-8 md:p-0">
-                <a href="#">
-                  <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                    <Command className="size-4" />
-                  </div>
-                  <div className="grid flex-1 text-left text-sm leading-tight">
-                    <span className="truncate font-semibold">Acme Inc</span>
-                    <span className="truncate text-xs">Enterprise</span>
-                  </div>
-                </a>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarHeader>
-        <SidebarContent>
-          <SidebarGroup>
-            <SidebarGroupContent className="px-1.5 md:px-0">
-              <SidebarMenu>
-                {data.navMain.map((item) => (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton
-                      tooltip={{
-                        children: item.title,
-                        hidden: false,
-                      }}
-                      onClick={() => {
-                        setActiveItem(item);
-                      }}
-                      isActive={activeItem.title === item.title}
-                      className="px-2.5 md:px-2"
-                    >
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                ))}
-              </SidebarMenu>
-            </SidebarGroupContent>
-          </SidebarGroup>
-        </SidebarContent>
-        <SidebarFooter>
-          <NavUser user={data.user} />
-        </SidebarFooter>
-      </Sidebar>
+    <Sidebar className="border-r" {...props}>
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size="lg" asChild className="md:h-8 md:p-0">
+              <a href="#">
+                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                  <Command className="size-4" />
+                </div>
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-semibold">Acme Inc</span>
+                  <span className="truncate text-xs">Enterprise</span>
+                </div>
+              </a>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarGroupContent className="px-1.5 md:px-0">
+            <SidebarMenu>
+              {data.navMain.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton
+                    tooltip={{
+                      children: item.title,
+                      hidden: false,
+                    }}
+                    onClick={() => {
+                      setActiveItem(item);
+                    }}
+                    isActive={activeItem.title === item.title}
+                    className="px-2.5 md:px-2"
+                  >
+                    <item.icon />
+                    <span>{item.title}</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+      <SidebarFooter>
+        <NavUser user={data.user} />
+      </SidebarFooter>
     </Sidebar>
   );
 };
