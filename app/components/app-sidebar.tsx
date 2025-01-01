@@ -11,7 +11,7 @@ import {
   Trash2,
 } from "lucide-react";
 
-import { NavUser } from "./nav-user";
+import NavUser from "./nav-user";
 import {
   Sidebar,
   SidebarContent,
